@@ -74,15 +74,19 @@ function playGame(humanChoice, computerChoice) {
         } else {
             console.log("It's draw! both dont get the points")
         }
-
-        // Get new values for humanChoice and computerChoice
-        humanChoice = getHumanChoice();
-        computerChoice = getComputerChoice();
     }
+
+
 
     // loop the round 5 times
     for (let i = 0; i < 5; i++) {
         playRound();
+
+        // make sure to stop calling the functions after 5 rounds
+        if (i < 4) {
+            humanChoice = getHumanChoice();
+            computerChoice = getComputerChoice();
+        }
     }
 
     // Decide who is the winner or draw
@@ -93,16 +97,7 @@ function playGame(humanChoice, computerChoice) {
     } else {
         console.log(`The game is a draw! Score: ${humanScore} - ${computerScore}`);
     }
+
 }
 
 playGame(humanSelection, computerSelection);
-
-// Score: ${humanScore} - ${playerScore}
-
-
-
-// if (humanChoice === "rock" && computerChoice === "scissors" || humanChoice === "paper" && computerChoice === "rock" || humanChoice === "scissors" && computerChoice === "paper") {
-//     humanScore += 1;
-// } else {
-//     computerScore += 1;
-// }
