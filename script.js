@@ -34,7 +34,7 @@ function getComputerChoice() {
 
 // get user's choice that only allows to choose between three choices
 function getHumanChoice(promptMessage = "Choose between Scissors, Paper or Rock") {
-    let input = prompt(promptMessage);
+    let input = prompt(promptMessage).toLowerCase();
     if (input === "scissors" || input === "paper" || input === "rock") {
         return input;
     } else {
