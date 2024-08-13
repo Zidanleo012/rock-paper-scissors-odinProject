@@ -16,6 +16,7 @@
 
 // use loop to play the rounds 5 times
 
+// get computer's random choice
 function getComputerChoice() {
     let randomNum = Math.floor(Math.random() * 3) + 1;
 
@@ -31,6 +32,7 @@ function getComputerChoice() {
     }
 }
 
+// get user's choice that only allows to choose between three choices
 function getHumanChoice(promptMessage = "Choose between Scissors, Paper or Rock") {
     let input = prompt(promptMessage);
     if (input === "scissors" || input === "paper" || input === "rock") {
@@ -43,10 +45,12 @@ function getHumanChoice(promptMessage = "Choose between Scissors, Paper or Rock"
 let humanSelection = getHumanChoice();
 let computerSelection = getComputerChoice();
 
+// function to play the game of 5 rounds
 function playGame(humanChoice, computerChoice) {
     let humanScore = 0;
     let computerScore = 0;
 
+    // conditional statements for logging the winner's text and increment the score
     function playRound() {
 
         if (humanChoice === "rock" && computerChoice === "scissors") {
@@ -71,14 +75,17 @@ function playGame(humanChoice, computerChoice) {
             console.log("It's draw! both dont get the points")
         }
 
+        // Get new values for humanChoice and computerChoice
         humanChoice = getHumanChoice();
         computerChoice = getComputerChoice();
     }
 
+    // loop the round 5 times
     for (let i = 0; i < 5; i++) {
         playRound();
     }
 
+    // Decide who is the winner or draw
     if (humanScore > computerScore) {
         console.log(`You Win! Score: ${humanScore} - ${computerScore}`)
     } else if (humanScore < computerScore) {
