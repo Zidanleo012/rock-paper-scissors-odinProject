@@ -1,22 +1,3 @@
-
-// This scissor paper rock will get random value from the computer as well as get input value from the user, each time one of them win increment the score by one and play the round 5 times.
-
-// Create a function named getComputerChoice that randomly return "rock", "paper", or "scissor" from computer.
-
-// Create a function named getHumanChoice that get rock, paper, or scissor input from user.
-
-// assign the getComputerChoice to computerSelection variable
-// assign the getHumanChoice to humanSelection variable
-
-// declare global variable for computer and human's score
-
-// create a playRound function to decide the winner's round, print the text wins or loses and increment the score for the winner.
-// use conditional if statement to determine the winner
-// create function named playRound and move the playRound function inside the playGame function.
-
-// use loop to play the rounds 5 times
-
-// get computer's random choice
 function getComputerChoice() {
     let randomNum = Math.floor(Math.random() * 3) + 1;
 
@@ -32,7 +13,6 @@ function getComputerChoice() {
     }
 }
 
-// get user's choice that only allows to choose between three choices
 function getHumanChoice(promptMessage = "Choose between Scissors, Paper or Rock") {
     let input = prompt(promptMessage).toLowerCase();
     if (input === "scissors" || input === "paper" || input === "rock") {
@@ -45,12 +25,10 @@ function getHumanChoice(promptMessage = "Choose between Scissors, Paper or Rock"
 let humanSelection = getHumanChoice();
 let computerSelection = getComputerChoice();
 
-// function to play the game of 5 rounds
 function playGame(humanChoice, computerChoice) {
     let humanScore = 0;
     let computerScore = 0;
 
-    // conditional statements for logging the winner's text and increment the score
     function playRound() {
 
         if (humanChoice === "rock" && computerChoice === "scissors") {
@@ -78,18 +56,15 @@ function playGame(humanChoice, computerChoice) {
 
 
 
-    // loop the round 5 times
     for (let i = 0; i < 5; i++) {
         playRound();
 
-        // make sure to stop calling the functions after 5 rounds
         if (i < 4) {
             humanChoice = getHumanChoice();
             computerChoice = getComputerChoice();
         }
     }
 
-    // Decide who is the winner or draw
     if (humanScore > computerScore) {
         console.log(`You Win! Score: ${humanScore} - ${computerScore}`)
     } else if (humanScore < computerScore) {
