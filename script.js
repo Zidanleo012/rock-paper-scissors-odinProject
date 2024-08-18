@@ -25,39 +25,45 @@ const outcomes = {
 let humanScore = 0;
 let computerScore = 0;
 let roundPlayed = 0;
+const imgWrapper = document.querySelector('#img-container');
+const humanDisplayScore = document.querySelector('#humanDisplayScore');
+const computerDisplayScore = document.querySelector('#computerDisplayScore');
+const scoreResult = document.querySelector('#scoreResult');
 
 function playGame(humanChoice, computerChoice) {
 
     function playRound() {
         roundPlayed += 1;
-        
-        if (roundPlayed > 5) return;
         if (humanChoice === computerChoice) {
             console.log("It's a draw! both don't get the point")
+            scoreResult.textContent = "It's a draw! both don't get the point"
         } else if (outcomes[humanChoice]?.beats === computerChoice) {
-            console.log(`You win! ${outcomes[humanChoice].message}`)
+            console.log(`You win! ${outcomes[humanChoice].message}`);
             humanScore += 1;
+            humanDisplayScore.textContent = `Human score: ${humanScore}`
+            scoreResult.textContent = `You win! ${outcomes[humanChoice].message}`
         } else {
             console.log(`You lose! ${outcomes[computerChoice].message}`);
-            computerScore;
+            computerScore += 1;
+            computerDisplayScore.textContent = `Computer Score: ${computerScore}`
+            scoreResult.textContent = `You win! ${outcomes[computerChoice].message}`
+
         }
     }
+    if (humanScore === 5 || computerScore === 5) return;
 
     playRound()
 
-    if (roundPlayed === 5) {
-        if (humanScore > computerScore) {
-            console.log(`You Win! Score: ${humanScore} - ${computerScore}`)
-        } else if (humanScore < computerScore) {
-            console.log(`You lose! Score: ${humanScore} - ${computerScore}`)
-        } else {
-            console.log(`The game is a draw! Score: ${humanScore} - ${computerScore}`);
-        }
+    if (humanScore === 5) {
+        console.log(`You Win! Score: ${humanScore} - ${computerScore}`);
+        scoreResult.textContent = 'YOU WIN THE GAME!!!'
+    } else if (computerScore === 5) {
+        console.log(`You lose! Score: ${humanScore} - ${computerScore}`);
+        scoreResult.textContent = 'YOU LOSE THE GAME!!!'
     }
 }
 
-
-container.addEventListener('click', (e) => {
+imgWrapper.addEventListener('click', (e) => {
     let target = e.target;
 
     humanSelection = target.id;
