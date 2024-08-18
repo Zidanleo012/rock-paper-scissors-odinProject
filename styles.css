@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(0, 0, 0, 0.5);
+    background-image: url(pictures/images.jpg);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(72, 209, 204, 0.5);
+    width: 700px;
+    height: 350px;
+    margin: auto;
+    justify-content: space-between;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* button {
+    border: none;
+} */
+
+#img-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+#img-container img {
+    width: 100px;
+}
+
+#scoreContainer {
+    display: flex;
+    justify-content: space-around;
+}
